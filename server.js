@@ -1,4 +1,14 @@
 import app from "./app.js"
-app.listen(4000, () => {
-    console.log(`Server listening at port ${4000}`);
+import cloudinary from "cloudinary"
+
+
+cloudinary.v2.config({
+    cloud_name: "",
+    api_key: "",
+    api_secret: ""
+
+})
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server listening at port ${process.env.PORT}`);
 });
