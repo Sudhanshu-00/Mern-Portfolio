@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import dbConnection from "./database/dbConnection.js";
+import { errorMiddleware } from "./middlewares/error.js";
 
 const app = express();
 
@@ -25,6 +27,7 @@ app.use(
         tempFileDir: "/tmp/",
     })
 );
-
+dbConnection();
+app.use(errorMiddleware);
 
 export default app;
